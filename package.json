@@ -3,10 +3,13 @@
     "version": "1.0.0",
     "license": "MIT",
     "description": "A server-side rendered React app",
-    "main": "src/server/index.js",
+    "main": "src/server/index.tsx",
+    "type": "module",
     "scripts": {
-        "start": "webpack --config webpack.config.js && node src/server/index.js",
-        "dev": "webpack serve --config webpack.config.js"
+        "build": "webpack --config config/webpack.prod.cjs",
+        "build:server": "tsc -p config/tsconfig.json",
+        "start": "yarn build && yarn build:server && node dist/server/index.js",
+        "dev": "webpack serve --config config/webpack.dev.cjs"
     },
     "dependencies": {
         "express": "^4.17.1",
@@ -19,11 +22,21 @@
         "@babel/node": "^7.16.5",
         "@babel/preset-env": "^7.16.5",
         "@babel/preset-react": "^7.16.5",
+        "@babel/preset-typescript": "^7.21.0",
+        "@types/node": "^18.15.11",
+        "@types/react": "^18.0.31",
+        "@types/react-dom": "^18.0.11",
         "babel-loader": "^8.2.3",
+        "cross-env": "^7.0.3",
         "html-webpack-plugin": "^5.5.0",
         "nodemon": "^2.0.15",
+        "terser-webpack-plugin": "^5.3.7",
+        "ts-loader": "^9.4.2",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.0.2",
         "webpack": "^5.64.4",
         "webpack-cli": "^4.9.1",
-        "webpack-dev-server": "^4.13.1"
+        "webpack-dev-server": "^4.13.1",
+        "webpack-merge": "^5.8.0"
     }
 }

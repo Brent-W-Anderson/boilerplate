@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "../dist/"
+    },
+    "include": [
+        "../src"
+    ],
+    "exclude": [
+        "../node_modules",
+        "../dist",
+        "../src/client"
+    ]
+}

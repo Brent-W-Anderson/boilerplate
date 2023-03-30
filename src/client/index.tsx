@@ -2,7 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../App'
 
-const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate
+declare global {
+    interface ImportMeta {
+        webpackHot?: {
+            accept: () => void
+        }
+    }
+}
+
+const renderMethod = import.meta.webpackHot ? ReactDOM.render : ReactDOM.hydrate
 renderMethod(
     <React.StrictMode>
         <App />
