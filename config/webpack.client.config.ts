@@ -1,6 +1,7 @@
 import path from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 // webpackDevServer isn't directly being used, but it is needed for devServer
 import webpackDevServer from 'webpack-dev-server'
 
@@ -28,6 +29,10 @@ const config: webpack.Configuration = {
             filename: 'index.html',
             inject: false
         } ),
+        new MiniCssExtractPlugin( {
+            filename: 'styles/[name].css',
+            chunkFilename: 'styles/[id].css',
+        } ),
     ],
     module: {
         rules: [
@@ -39,6 +44,14 @@ const config: webpack.Configuration = {
             {
                 test: /\.hbs$/,
                 use: 'handlebars-loader',
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                ],
             },
         ],
     },

@@ -2,6 +2,7 @@ import path from 'path'
 import webpack from 'webpack'
 import nodeExternals from 'webpack-node-externals'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 const config: webpack.Configuration = {
     entry: './server/server.tsx',
@@ -29,6 +30,9 @@ const config: webpack.Configuration = {
                 },
             ],
         } ),
+        new MiniCssExtractPlugin( {
+            filename: 'styles.css',
+        } ),
     ],
     module: {
         rules: [
@@ -39,6 +43,14 @@ const config: webpack.Configuration = {
                     {
                         loader: 'ts-loader',
                     },
+                ],
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
                 ],
             },
         ]

@@ -28,7 +28,9 @@ app.set( 'views', path.resolve( __dirname, 'views' ) )
 
 app.get( '/', ( _, res ) => {
     const appMarkup = ReactDOMServer.renderToString( <App /> )
-    res.render( 'index', { appMarkup } )
+    const styles = 'styles.css'
+
+    res.render( 'index', { appMarkup, styles } )
 } )
 
 const port = process.env.PORT || 3000
