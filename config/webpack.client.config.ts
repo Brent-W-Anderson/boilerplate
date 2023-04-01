@@ -16,18 +16,18 @@ const config: webpack.Configuration = {
         extensions: [ '.ts', '.tsx', '.js' ],
     },
     devServer: {
-        static: path.join( __dirname, '../dist/client' ),
+        static: path.join( __dirname, '../assets' ),
         historyApiFallback: true,
         port: 8080,
         open: true,
         hot: true,
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: '!!handlebars-loader!' + path.resolve(__dirname, '../server/views/index.hbs'),
+        new HtmlWebpackPlugin( {
+            template: '!!handlebars-loader!' + path.resolve( __dirname, '../server/views/index.hbs' ),
             filename: 'index.html',
             inject: false
-        }),
+        } ),
     ],
     module: {
         rules: [

@@ -21,14 +21,13 @@ if ( isDevelopment ) {
     app.use( webpackHotMiddleware( compiler ) )
 }
 
-app.use( express.static( path.resolve( __dirname, '../dist/client' ) ) )
+app.use( express.static( path.resolve( __dirname, '../client' ) ) )
 
 app.set( 'view engine', 'hbs' )
 app.set( 'views', path.resolve( __dirname, 'views' ) )
 
-app.get( '/', ( req, res ) => {
+app.get( '/', ( _, res ) => {
     const appMarkup = ReactDOMServer.renderToString( <App /> )
-
     res.render( 'index', { appMarkup } )
 } )
 
