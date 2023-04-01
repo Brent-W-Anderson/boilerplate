@@ -16,7 +16,7 @@ const config: webpack.Configuration = {
         extensions: [ '.ts', '.tsx', '.js' ],
     },
     devServer: {
-        static: path.join( __dirname, '../assets' ),
+        static: path.join( __dirname, '../client' ),
         historyApiFallback: true,
         port: 8080,
         open: true,
