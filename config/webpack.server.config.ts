@@ -23,6 +23,10 @@ const config: webpack.Configuration = {
                     from: path.resolve( __dirname, '../server/views' ),
                     to: path.resolve( __dirname, '../dist/server/views' ),
                 },
+                {
+                    from: path.resolve( __dirname, '../assets/favicon.ico' ),
+                    to: path.resolve( __dirname, '../dist/client/' ),
+                },
             ],
         } ),
     ],

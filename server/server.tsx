@@ -6,7 +6,6 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackClientConfig from '../config/webpack.client.config'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-// import { StaticRouter } from 'react-router-dom/server'
 import App from '../client/components/App'
 
 const app = express()
@@ -29,8 +28,6 @@ app.set( 'views', path.resolve( __dirname, 'views' ) )
 
 app.get( '/', ( req, res ) => {
     const appMarkup = ReactDOMServer.renderToString( <App /> )
-
-    console.log( appMarkup )
 
     res.render( 'index', { appMarkup } )
 } )

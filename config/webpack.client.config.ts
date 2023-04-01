@@ -1,6 +1,8 @@
 import path from 'path'
 import webpack from 'webpack'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+// webpackDevServer isn't directly being used, but it is needed for devServer
+import webpackDevServer from 'webpack-dev-server'
 
 const config: webpack.Configuration = {
     entry: './client/index.tsx',
@@ -13,6 +15,20 @@ const config: webpack.Configuration = {
     resolve: {
         extensions: [ '.ts', '.tsx', '.js' ],
     },
+    devServer: {
+        static: path.join( __dirname, '../dist/client' ),
+        historyApiFallback: true,
+        port: 8080,
+        open: true,
+        hot: true,
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: '!!handlebars-loader!' + path.resolve(__dirname, '../server/views/index.hbs'),
+            filename: 'index.html',
+            inject: false
+        }),
+    ],
     module: {
         rules: [
             {
@@ -20,18 +36,12 @@ const config: webpack.Configuration = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
+            {
+                test: /\.hbs$/,
+                use: 'handlebars-loader',
+            },
         ],
     },
-    plugins: [ 
-        new CopyWebpackPlugin( {
-            patterns: [
-                {
-                    from: path.resolve( __dirname, '../client/index.html' ),
-                    to: path.resolve( __dirname, '../dist/client' ),
-                },
-            ],
-        } ),
-    ],
 }
 
 export default config
