@@ -18,8 +18,8 @@ const App: React.FC = () => {
     return (
         <div className="app">
             <h1>My SSR App</h1>
-            <button onClick={() => setShowTest( !showTest )}>Loading Test</button>
-            {showTest ? <LoadingTest /> : null}
+            <button onClick={ () => setShowTest( !showTest ) }>Loading Test</button>
+            { showTest ? <LoadingTest /> : null }
         </div>
     )
 }
