@@ -7,7 +7,7 @@ const App = loadable( () => import( './components/App' ) )
 const container = document.getElementById( 'root' )
 
 if ( container ) {
-        ReactDOM.hydrateRoot( container, <App /> )
+    ReactDOM.hydrateRoot( container, <App /> )
 } else {
     console.error( 'Failed to find the root element to mount the application.' )
 }
