@@ -1,9 +1,10 @@
-h1 {
-    &.loading {
-        color: red;
-    }
+@import 'styles/reset.scss';
 
-    &.loaded {
-        color: green;
+// apply global defaults here..
+#root {
+    .page {
+        height: 100vh;
+
+        // import page specific overrides here..
     }
 }

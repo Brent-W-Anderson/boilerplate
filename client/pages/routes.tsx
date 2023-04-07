@@ -1,10 +1,8 @@
 import React from 'react'
 import loadable from '@loadable/component'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
-
 const HomePage = loadable( () => import( './homePage/homePage' ) )
 const AboutPage = loadable( () => import( './aboutPage/aboutPage' ) )
-import '../index.scss'
 
 // warning with useLayoutEffect
 React.useLayoutEffect = React.useEffect

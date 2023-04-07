@@ -1,0 +1,11 @@
+@import '../../styles/variables.scss';
+
+h1 {
+    &.loading {
+        color: $red;
+    }
+
+    &.loaded {
+        color: $green;
+    }
+}

@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
     const [ showTest, setShowTest ] = useState( false )
 
     return (
-        <div className="app">
+        <div id='homePage' className='page'>
             <h1>My SSR App</h1>
             <button onClick={ () => setShowTest( !showTest ) }>Loading Test</button>
             { showTest ? <LoadingTest /> : null }

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import loadable from '@loadable/component'
+import './index.scss'
 
 const Routes = loadable( () => import( './pages/routes' ) )
 
