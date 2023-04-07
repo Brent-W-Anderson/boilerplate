@@ -4,9 +4,7 @@ import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackClientConfig from '../config/webpack.client.config'
-import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import App from '../client/components/App'
 
 const app = express()
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -26,8 +24,9 @@ app.use( express.static( path.resolve( __dirname, '../client' ) ) )
 app.set( 'view engine', 'hbs' )
 app.set( 'views', path.resolve( __dirname, 'views' ) )
 
-app.get( '/', ( _, res ) => {
-    const appMarkup = ReactDOMServer.renderToString( <App /> )
+// we don't need to about paths because react-router-dom takes care of this.
+app.get( '*', ( _, res ) => {
+    const appMarkup = ReactDOMServer.renderToString( null )
     const styles = 'styles.css'
 
     res.render( 'index', { appMarkup, styles } )

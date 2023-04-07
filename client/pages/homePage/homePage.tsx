@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 import loadable from '@loadable/component'
-import './app.scss'
 
 const LoadingTest = loadable(
     () =>
         import( 'p-min-delay' ).then( ( pMinDelay ) =>
-            pMinDelay.default( import( './test/loading' ), 3000 )
+            pMinDelay.default( import( '../../components/test/loading' ), 3000 )
         ),
     {
         fallback: <h1 className="loading">Loading...</h1>,
     }
 )
 
-const App: React.FC = () => {
+const HomePage: React.FC = () => {
     const [ showTest, setShowTest ] = useState( false )
 
     return (
@@ -24,4 +23,4 @@ const App: React.FC = () => {
     )
 }
 
-export default App
+export default HomePage

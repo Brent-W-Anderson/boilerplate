@@ -13,6 +13,7 @@ const config: webpack.Configuration = {
         publicPath: '/',
     },
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+    devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map',
     resolve: {
         extensions: [ '.ts', '.tsx', '.js' ],
     },
