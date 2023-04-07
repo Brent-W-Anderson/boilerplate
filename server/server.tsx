@@ -24,7 +24,7 @@ app.use( express.static( path.resolve( __dirname, '../client' ) ) )
 app.set( 'view engine', 'hbs' )
 app.set( 'views', path.resolve( __dirname, 'views' ) )
 
-// we don't need to about paths because react-router-dom takes care of this.
+// we don't need to worry about paths because react-router-dom takes care of this.
 app.get( '*', ( _, res ) => {
     const appMarkup = ReactDOMServer.renderToString( null )
     const styles = 'styles.css'
